@@ -9,7 +9,8 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+    match: [/\S+@\S+\.\S+/, 'is invalid']
   },
   password: {
     type: String,
@@ -34,6 +35,17 @@ const userSchema = new mongoose.Schema({
       ref: 'Transaction'
     }
   ]
+});
+
+// Middleware para hashear la contraseña antes de guardar el usuario
+userSchema.pre('save', function(next) {
+  if (!this.isModified('password')) return next();
+
+  bcrypt.hash(this.password, saltRounds, (err, hash) => {
+    if (err) return next(err);
+    this.password = hash;
+    next();
+  });
 });
 
 // Crear el modelo User a partir del esquema definido

@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  .container
+    .card.bg-primary.text-white(style={maxWidth: '18rem'})
+      .card-header Withdraw
+      .card-body
+        .card-title Current Balance: #{currentUser.balance}
+        form(method="post" action="/withdraw" onSubmit="return handleWithdraw()")
+          .mb-3
+            label(for="amount" class="form-label") Amount
+            input#amount.form-control(type="text", name="amount", value=withdrawAmount, onChange="handleAmountChange()", placeholder="Enter amount")
+          button.btn.btn-light(type="submit", disabled=withdrawAmount === '') Withdraw
+        if showStatus
+          .alert(variant=statusType)= statusMessage

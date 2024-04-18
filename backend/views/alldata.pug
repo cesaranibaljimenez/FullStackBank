@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  .container.mt-4.mx-3
+    .card.bg-light
+      .card-body
+        .card-title All User Data
+        table.table.striped.bordered.hover
+          thead
+            tr
+              th(scope="col") #
+              th(scope="col") Name
+              th(scope="col") Email
+              th(scope="col") Password
+              th(scope="col") Transactions
+          tbody
+            each user, index in users
+              tr(key=index)
+                th(scope="row") #{index + 1}
+                td #{user.name}
+                td #{user.email}
+                td #{user.password}
+                td
+                  each transaction, index in user.transactions
+                    div(key=index) #{transaction.type}: $#{transaction.amount}

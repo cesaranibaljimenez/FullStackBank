@@ -1,0 +1,18 @@
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  Link.navbar-brand(to="/") BadBank
+  button.navbar-toggler.d-lg-none(type="button", data-bs-toggle="collapse", data-bs-target="#navbarNav", aria-controls="navbarNav", aria-expanded="false", aria-label="Toggle navigation")
+    span.navbar-toggler-icon
+  .collapse.navbar-collapse#navbarNav
+    ul.navbar-nav
+      li.nav-item 
+        Link.nav-link(to="/", title="home") Home 
+      li.nav-item
+        Link.nav-link(to="/create-account/", title="Create a user account") Create Account
+      li.nav-item
+        Link.nav-link(to="/login/", title="Log in with your user account") Login
+      li.nav-item
+        Link.nav-link(to="/deposit/", title="Make a deposit transaction") Deposit
+      li.nav-item
+        Link.nav-link(to="/withdraw/", title="Make a withdrawal transaction") Withdraw
+      li.nav-item
+        Link.nav-link(to="/alldata/", title="View transaction movement") AllData

@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  .container
+    .card.bg-primary.text-white(style={maxWidth: '18rem'})
+      .card-header Login
+      .card-body
+        .card-title Login
+        form(method="post" action="/login" onSubmit="return handleSubmit()")
+          .mb-3
+            label(for="email" class="form-label") Email
+            input#email.form-control(type="email", name="email", value=email, onChange="handleEmailChange()")
+          .mb-3
+            label(for="password" class="form-label") Password
+            input#password.form-control(type="password", name="password", value=password, onChange="handlePasswordChange()")
+          button.btn.btn-light(type="submit") Login
+        if error
+          .alert.alert-danger= error

@@ -1,0 +1,13 @@
+block content
+  .container
+    .card.bg-primary.text-white(style={maxWidth: '18rem'})
+      .card-header Deposit
+      .card-body
+        .card-title Current Balance: #{currentUser.balance}
+        form(onSubmit="return handleDeposit()")
+          .mb-3
+            label(for="amount" class="form-label") Amount
+            input#amount.form-control(type="text", name="amount", value=depositAmount, onChange="handleAmountChange()", placeholder="Enter amount")
+          button.btn.btn-light(type="submit", disabled=depositAmount === '') Deposit
+  if showStatus
+    .alert(variant=statusType)= statusMessage

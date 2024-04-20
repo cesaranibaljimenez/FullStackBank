@@ -13,13 +13,16 @@ const app = express();
 // Middleware para analizar las solicitudes con cuerpo JSON
 app.use(express.json());
 
+// Middleware para parsear application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
+
 // Conexión a MongoDB
-mongoose.connect(MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true})
+mongoose.connect(MONGODB_URI)
   .then(() => {
     console.log('Connected to MongoDB');
   })
-  .catch((error)=> {
-    console.log('Error connecting to MongoDB:' , error);
+  .catch((error) => {
+    console.log('Error connecting to MongoDB:', error);
   });
 
 // Configuración para servir archivos estáticos
@@ -34,7 +37,7 @@ app.use('/api', userRoutes);
 app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'frontend', 'build', 'index.html'));
   });
-
+ 
 // Manejador de errores para rutas no encontradas
 app.use((req, res, next) => {
   const error = new Error('Not found');

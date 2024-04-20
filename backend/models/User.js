@@ -48,6 +48,23 @@ userSchema.pre('save', function(next) {
   });
 });
 
+userSchema.pre('save', function(next) {
+    if (this.isNew && !this.accountNumber) {
+        this.accountNumber = Math.random().toString(36).slice(2, 11); // Utiliza slice en lugar de substr
+    }
+    next();
+});
+
+userSchema.methods.adjustBalance = function(amount) {
+    if (this.balance + amount < 0 && !this.authorizedOverdraft) {
+        throw new Error('Insufficient funds');
+    }
+    this.balance += amount;
+    return this.save();
+};
+
+
+
 // Crear el modelo User a partir del esquema definido
 const User = mongoose.model('User', userSchema);
 

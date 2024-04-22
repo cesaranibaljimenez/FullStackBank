@@ -4,24 +4,23 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --testPathPattern=userRoutes\\.test\\.js$"
+    "test": "jest --no-cache --testPathPattern=index\\.test\\.js$"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.1.1",
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.5.0",
     "mongoose": "^8.3.1",
     "pug": "^3.0.2"
   },
   "devDependencies": {
     "jest": "^29.7.0",
-    "normalize-url": "^8.0.1",
+    "mongodb-memory-server": "^9.1.8",
     "supertest": "^6.3.4"
   }
 }

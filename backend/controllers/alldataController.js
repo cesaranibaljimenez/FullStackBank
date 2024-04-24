@@ -1,7 +1,8 @@
+
 const User = require('../models/User');
 const Transaction = require('../models/Transactions'); 
 
-getAllData = async function(req, res) {
+const AllData = async function(req, res) {
     const { userId } = req.query;
 
     try {
@@ -16,5 +17,18 @@ getAllData = async function(req, res) {
     }
 };
 
+const AllTransactions = async function(req, res) {
+    const { userId } = req.query;
 
-module.exports = { getAllData };
+    try {
+        const transactions = await Transaction.find({ user: userId });
+        res.json(transactions);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+
+module.exports = { AllData: AllData, AllTransactions: AllTransactions };
+
+

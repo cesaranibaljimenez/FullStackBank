@@ -10,7 +10,9 @@ const User = require('../models/User'); // Asegúrate de que la ruta al modelo e
 const { checkPassword } = require('../hashPassword'); // Importa la función de comparación de contraseñas
 const { deposit } = require('../controllers/depositController');
 const { withdraw } = require('../controllers/withdrawController');
-const { getallData } = require('../controllers/alldataController');
+const { AllData, AllTransactions } = require('../controllers/alldataController');
+
+
 
 console.log('Dependencias importadas en userRoutes.js');
 
@@ -72,7 +74,10 @@ router.post('/deposit', authMiddleware, deposit);
   router.post('/withdraw', authMiddleware, withdraw);
   
   // Ruta para obtener toda la información de la cuenta del usuario
-  router.get('/allData', authMiddleware, getAllData);
+  router.get('/alldata', authMiddleware, AllData);
+
+  // Ruta para obtener toda la información de la cuenta del usuario
+  router.get('/alltransactions', authMiddleware, AllTransactions);
 
   console.log('Rutas registradas en userRoutes.js');
 

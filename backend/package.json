@@ -17,11 +17,12 @@
     "jsonwebtoken": "^9.0.2",
     "mongodb": "^6.5.0",
     "mongoose": "^8.3.1",
-    "pug": "^3.0.2"
+    "pug": "^3.0.2",
+    "superagent": "^9.0.1"
   },
   "devDependencies": {
     "jest": "^29.7.0",
     "mongodb-memory-server": "^9.1.8",
-    "supertest": "^6.3.4"
+    "supertest": "^7.0.0"
   }
 }

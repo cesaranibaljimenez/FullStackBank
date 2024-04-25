@@ -2,7 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const path = require('path');
 const userRoutes = require('./routes/userRoutes');
+const cors = require('cors');
 require('dotenv').config();
+
 
 const PORT = process.env.PORT;
 const MONGODB_URI = process.env.MONGODB_URI;
@@ -12,6 +14,9 @@ const app = express();
 //Middleware para manejar solicitudes con cuerpo JSON
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// Habilita CORS para todas las solicitudes
+app.use(cors());
+
 
 // Logs de cada petición para diagnóstico
 app.use((req, res, next) => {
